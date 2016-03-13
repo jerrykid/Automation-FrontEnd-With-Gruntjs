@@ -1,0 +1,24 @@
+﻿1)--For basic test case
+describe('test someting',function(){
+	it('do something', function(){
+	
+	});
+});
+
+2)using chai:
+var chai = require('chai');
+var expect = require('expect');
+expect(foo).to.equal('foo');
+
+To Skip => it.skip, to only it.only
+
+4)Hook: beforeEach(f),afterEach(f),before(f),after(f);
+
+5)Report => try parameter --reporters
+
+mocha indexSpec.js reporter doc > out.html
+mocha indexSpec.js reporter nyan
+
+6)For test coverage
+	- npm intall blacket --save-dev
+	- edit package 

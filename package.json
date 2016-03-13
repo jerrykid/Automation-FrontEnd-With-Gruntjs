@@ -1,0 +1,23 @@
+{
+    "name": "NodeTest",
+    "version": "0.0.0",
+    "description": "NodeTest",
+    "main": "server.js",
+    "scripts": {"test": "mocha & mocha test --require blanket --reporter html-cov > coverage.html"},
+    "author": {
+        "name": "Thind",
+        "email": ""
+    },
+    "devDependencies": {
+        "blanket": "^1.2.2",
+        "chai": "^3.5.0",
+        "grunt-mocha-test": "^0.12.7",
+        "mocha": "^2.4.5"
+    },
+    "config": {
+        "blanket": {
+            "pattern": [ "index.js" ],
+            "data-cover-never": "node_modules" 
+        }
+    }
+}
