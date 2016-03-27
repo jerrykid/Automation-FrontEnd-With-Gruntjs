@@ -22,3 +22,6 @@ mocha indexSpec.js reporter nyan
 6)For test coverage
 	- npm intall blacket --save-dev
 	- edit package 
+7)
+	Mock => Sinon => install Sinon,Sinon-chai.
+
