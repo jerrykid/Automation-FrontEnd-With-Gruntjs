@@ -1,6 +1,10 @@
 ﻿var chai = require('chai');
 var expect = require('chai').expect;
 var word = require('../index.js');
+var sinon = require('sinon');
+var sinoChai = require('sinon-chai');
+chai.use(sinoChai);
+
 
 describe('Do something', function () {
     before(function () {
@@ -39,3 +43,27 @@ describe('Tokenize', function () {
         expect(outputWord).to.include.members(['hello','world']);
     });
 });
+
+describe('Github info', function () {
+    it('Github info', function (done) {
+        word.info(function (reply) {
+            console.log(reply);
+            done();
+        });
+        console.log('Hello world');
+    })      
+    
+});
+
+describe('Info Language',function(){
+	it.only('return language info',function(done){
+		var language = {
+			'language':'Assembly'
+		};
+		var stub = sinon.stub().returns(language);
+		word.infoLanguage(stub, function(reply){
+			expect(reply).to.equal('Language is Assembly');
+		})
+		done();
+	});
+})
