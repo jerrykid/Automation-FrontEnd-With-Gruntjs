@@ -1,6 +1,4 @@
 ﻿module.exports = function (grunt) {
-    //load all tasks with grunt-
-    require("matchdep").filterDev("grunt-*").forEach(grunt.loadNpmTasks);
     
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
@@ -19,8 +17,8 @@
                 tasks: ['htmlhint']
             },
             js: {
-                files: ['js/validator.js'],
-                tasks: ['uglify']
+                files: ['scripts/validator.js'],
+                tasks: ['uglify','jshint']
             }
         },
         
@@ -43,7 +41,7 @@
         },
         //JSHint
         jshint: {
-            all: ['js/**/*.js'],
+            all: ['scripts/*.js'],
             options: {
                 bitwise: true,
                 curly: true,
@@ -67,13 +65,22 @@
         uglify: {
             build: {
                 files: {
-                    'build/js/validator.min.js': ['scripts/validator.js']
+                    'build/scripts/validator.min.js': ['scripts/validator.js']
                 }
             }
         }
     });
     
-    grunt.registerTask('default', []);
+	grunt.loadNpmTasks('grunt-contrib-jshint');
+	grunt.loadNpmTasks('grunt-contrib-watch');
+	grunt.loadNpmTasks('grunt-contrib-copy');
+	grunt.loadNpmTasks('grunt-contrib-uglify');
+	grunt.loadNpmTasks('grunt-contrib-watch');
+	grunt.loadNpmTasks('grunt-contrib-clean');
+	grunt.loadNpmTasks('grunt-contrib-compress');
+	grunt.loadNpmTasks('grunt-contrib-htmlhint');
+	
+    grunt.registerTask('default', ['jshint']);
     grunt.registerTask('build', ['clean', 'htmlhint', 'jshint', 'uglify']);
 
 };
