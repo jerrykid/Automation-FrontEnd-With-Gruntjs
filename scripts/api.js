@@ -25,3 +25,7 @@
 exports.saveUser = function (user){    
     post("/saveUser",user);
 }
+
+exports.getUser = function (user){    
+    post("/getUser",user);
+}
