@@ -1,13 +1,14 @@
 ﻿var assert = require('assert');
+var expect = require('chai').expect;
 var sinon = require('sinon');
-var DataBase; 
-describe('Test User Setup', function() {
+var user = require('../scripts/user.js'); 
+var api = require('../scripts/api.js');
+
+describe('Test spy to make sure pass correct User to api', function() {
     it('should call save once', function () {
-        var save = sinon.mock(Database, 'save');
-        
-        setupNewUser({ name: 'test' }, function () { });
-        
-        save.restore();
-        sinon.assert.calledOnce(save);
+        var apiSpy = sinon.spy(api,"saveUser");
+        user.saveUser("Thi");
+        expect(apiSpy.calledOnce).to.be.true;
+        expect(apiSpy.args[0]).to.contain('Thi');
     }); 
 })

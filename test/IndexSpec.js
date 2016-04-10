@@ -1,6 +1,6 @@
 ﻿var chai = require('chai');
 var expect = require('chai').expect;
-var word = require('../index.js');
+var word = require('../scripts/index.js');
 var sinon = require('sinon');
 var sinoChai = require('sinon-chai');
 chai.use(sinoChai);
@@ -56,7 +56,7 @@ describe('Github info', function () {
 });
 
 describe('Info Language',function(){
-	it.only('return language info',function(done){
+	it('return language info',function(done){
 		var language = {
 			'language':'Assembly'
 		};
